@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<title>Dropdown</title>
 </head>
@@ -29,13 +30,12 @@
 			background-repeat: no-repeat;
 			background-size: 100% ;
 		}
-		#move{
+		/*#move{
 			margin-left: 800px;
-		}
+		}*/
 		#inputbox
 		{
- 		margin-left: 1300px;
-
+ 		
  		width:75px;
   		background-image: url("svg-search.gif");
  		background-size: 35px 35px;
@@ -45,7 +45,6 @@
  	 	padding: 14px 20px 12px 45px;
  		
  		border-bottom: 1px solid #ddd;
-
  		position:relative;
  		bottom:13px;
  	 	
@@ -63,15 +62,14 @@
 			{
 				display: none;
 				position: relative;
-				left:1300px;
-				bottom: :70px;
+				
+				
 			}
-
 		#submit{
 		
-			margin-bottom: -10px;	
+				margin-bottom: -10px;	
 				position:relative;
- 		bottom:13px;
+ 				top:-15px;
 			
 		}
 		.total{
@@ -96,13 +94,14 @@
     width: 85px;
     border:1px solid gray; 
     background: white;	
-    opacity: 0.7;
+    opacity: 1;
     border-radius: 4px; 
+    position: relative;
+
+
+
 }
-ul{
-	position: relative;
-	bottom:25px;
-}
+
 	</style>
 
 	<div id="Caption" ><img src="" name="fill" id="fill" width="" height="" /><br></div>
@@ -113,6 +112,26 @@ ul{
 		}
 	</style>
 <script type="text/javascript">
+	var x1=screen.height/864;
+	function getWidth() {
+  return Math.max(
+    document.body.offsetWidth,
+    document.documentElement.offsetWidth,
+    document.documentElement.clientWidth
+  				);
+				}
+	console.log(document.getElementById("inputbox").height)
+	var x2=x1*getWidth()*1300/1536;
+	document.getElementById("move").style.marginLeft=(x2-500).toString()+"px"
+	document.getElementById("inputbox").style.marginLeft=x2.toString()+"px"
+	document.getElementById("dropdowncontent").style.left=x2.toString()+"px"
+	if(getWidth()===1024)
+		document.getElementById("dropdowncontent").style.bottom="52px";
+	else
+		document.getElementById("dropdowncontent").style.bottom="30px";
+
+	//document.getElementById("dropdowncontent").style.bottom=(document.getElementById("inputbox").style.height).toString()+"px";
+
 	var json=[{"anim":"Monkey","animdesc":"The Monkey is a primitve form of a human"},{"anim":"Donkey","animdesc":"The Donkey does a lot of work"},{"anim":"Elephant","animdesc":"Elephants never forget"},{"anim":"Dog","animdesc":"Dogs are man's best friends"},{"anim":"Deer","animdesc":"Deers are very timid creatures"},{"anim":"Giraffe","animdesc":"Giraffes have long necks"},{"anim":"Zebra","animdesc":"Zebras run in herds"},{"anim":"Cat","animdesc":"Cats love milk and fishes"}];
 	var anim= new Array();
 	for(var i=0;i<8;i++)
@@ -129,9 +148,7 @@ ul{
   			li.setAttribute("id",k.toString())
   			li.setAttribute("onclick","changeit(this)")
   			ul.appendChild(li)
-
   			
-
   		}
   	}
 	function capitalize()
@@ -143,9 +160,7 @@ ul{
 		 if(document.getElementById('inputbox').value.length==1)
 		 {
 		 	document.getElementById("dropdowncontent").style.display="block"
-
 		 }
-
 	} 
 	function changeit(b)
   		{
@@ -178,7 +193,6 @@ ul{
 			}
 			else
 				document.getElementById(i.toString()).style.display="none";
-
 			} 
 </script>
 </body>
