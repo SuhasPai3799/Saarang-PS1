@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dropdown</title>
+</head>
+<body onload="makelist()">
+	<div class="total" id="total1">
+		<a href="#">Home</a>
+		<a href="#">Schedule</a>
+		<a href="#">Sponsors</a>
+		<a href="#">Prizes</a>
+		<a href ="#" id="move">Animal Search</a>
+		<input type="text" name="inputbox" autocomplete="off" id="inputbox" onkeyup="toggler();generatelist()">
+		<input type="image" src="11.png"  name="submit" width=30px id="submit" onclick="letsdoit(inputbox)">
+	
+	<ul id="dropdowncontent" >
+		
+	</ul>
+	</div>
+
+
+	<style type="text/css">
+		html{
+			max-width: 100%;
+			overflow-x:hidden;
+		}
+		body{
+			background-image: url("22.jpg");
+			background-repeat: no-repeat;
+			background-size: 100% ;
+		}
+		#move{
+			margin-left: 800px;
+		}
+		#inputbox
+		{
+ 		margin-left: 1300px;
+
+ 		width:75px;
+  		background-image: url("svg-search.gif");
+ 		background-size: 35px 35px;
+ 		background-position: 5px 6px;
+  		background-repeat: no-repeat;
+  		font-size: 16px;
+ 	 	padding: 14px 20px 12px 45px;
+ 		
+ 		border-bottom: 1px solid #ddd;
+
+ 		position:relative;
+ 		bottom:13px;
+ 	 	
+		}
+		a{
+			position:relative;
+			top:20px;
+			font-size: 20px;
+			margin-left: 15px;	
+			text-decoration: none;
+			color:white;
+			font-family: cursive;
+		}
+		#dropdowncontent
+			{
+				display: none;
+				position: relative;
+				left:1300px;
+				bottom: :70px;
+			}
+
+		#submit{
+		
+			margin-bottom: -10px;	
+				position:relative;
+ 		bottom:13px;
+			
+		}
+		.total{
+			 position: absolute;
+			 min-width: 100px;
+			 max-height: 70px;
+			 background-color:black;
+			 opacity: 0.8;
+			 display: inline-block;
+			 z-index: 1;
+			 margin-bottom: none;
+			 margin:none;
+			 margin-left: -8px;
+			 margin-top: -8px;
+   			 
+} 
+.wow{
+    color: black;
+    padding:4px -10px;
+    text-decoration: none;
+    display: block;
+    width: 85px;
+    border:1px solid gray; 
+    background: white;	
+    opacity: 0.7;
+    border-radius: 4px; 
+}
+ul{
+	position: relative;
+	bottom:25px;
+}
+	</style>
+
+	<div id="Caption" ><img src="" name="fill" id="fill" width="" height="" /><br></div>
+	<style type="text/css">
+		#Caption{
+			padding-left: 50px;
+			padding-top: 350px;
+		}
+	</style>
+<script type="text/javascript">
+	var json=[{"anim":"Monkey","animdesc":"The Monkey is a primitve form of a human"},{"anim":"Donkey","animdesc":"The Donkey does a lot of work"},{"anim":"Elephant","animdesc":"Elephants never forget"},{"anim":"Dog","animdesc":"Dogs are man's best friends"},{"anim":"Deer","animdesc":"Deers are very timid creatures"},{"anim":"Giraffe","animdesc":"Giraffes have long necks"},{"anim":"Zebra","animdesc":"Zebras run in herds"},{"anim":"Cat","animdesc":"Cats love milk and fishes"}];
+	var anim= new Array();
+	for(var i=0;i<8;i++)
+		anim[i]=json[i.toString()].anim;
+  	
+  	function makelist()
+  	{
+  		for(var k=0;k<8;k++)
+  		{
+  			var ul=document.getElementById("dropdowncontent")
+  			var li=document.createElement("li")
+  			li.appendChild(document.createTextNode(json[k.toString()].anim));
+  			li.setAttribute("class","wow")
+  			li.setAttribute("id",k.toString())
+  			li.setAttribute("onclick","changeit(this)")
+  			ul.appendChild(li)
+
+  			
+
+  		}
+  	}
+	function capitalize()
+	{
+		document.getElementById("inputbox").value=document.getElementById("inputbox").value.toUpperCase()
+	}
+	function toggler()
+	{
+		 if(document.getElementById('inputbox').value.length==1)
+		 {
+		 	document.getElementById("dropdowncontent").style.display="block"
+
+		 }
+
+	} 
+	function changeit(b)
+  		{
+  			inputbox.value=b.innerHTML
+  		}
+  		function letsdoit(a)
+  		{
+  			if(anim.indexOf(a.value)>-1)
+  				{
+  					document.fill.src=a.value+".jpg"
+  					document.fill.height="300"
+  					document.fill.width="300"
+  					var t=document.getElementById("Caption").innerHTML
+  					var num=t.indexOf("r>")
+  					var l=t.slice(0,num+2)
+  					document.getElementById("Caption").innerHTML=l+json[anim.indexOf(a.value).toString()].animdesc
+  		}
+  	}
+	function generatelist()
+	{
+		if(document.getElementById('inputbox').value.length==1)
+			{
+				
+				capitalize();
+			}
+		for(i=0;i<8;i++)
+			if(anim[i].indexOf(document.getElementById('inputbox').value)>-1)
+			{
+				document.getElementById(i.toString()).style.display="block"
+			}
+			else
+				document.getElementById(i.toString()).style.display="none";
+
+			} 
+</script>
+</body>
+</html>
