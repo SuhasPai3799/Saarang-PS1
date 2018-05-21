@@ -1,162 +1,171 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	<title></title>
-</head>
-<body  onload="makelist()">
-<div class="row">
-<div class=" col-sm-1">Home</div>
-<div class=" col-sm-1">Schedule</div>
-<div class=" col-sm-1">Sponsors</div>
-<div class=" col-sm-1">About</div>
-<div class="pull-right">
-<div class=" col-sm-3" id="move">Animal Search</div>
-<div class="col-xs-1">
-	<input type="text" name="inputbox" id="inputbox" autocomplete="off" onkeyup="toggler();generatelist()">
-</div> 
-<div class="col-xs-1">
-	<img src="11.png" id="pic"  onclick="letsdoit(inputbox)">
-</div>
-</div>
-</div>
-
-<div class="pull-right">
-<ul id="dropdowncontent" >
-		
-</ul>
-</div>
-
-<style type="text/css">
-	#move{
-		position: relative;
-		bottom:7px;
-	}
-	#dropdowncontent{
-		display: none;
-		position: relative;
-		bottom: 10px;
-		margin-right: 90px;
-	}
-	.wow{
-    color: black;
-    padding:4px -10px;
-    text-decoration: none;
-    display: block;
-    width: 85px;
-    border:1px solid gray; 
-    background: white;	
-    opacity: 0.9;
-    border-radius: 4px;
-    position: relative;
-    left:320px; 
-    
-}
-	#pic{
-		width: 20px;
-		height: 20px;
-		position: relative;
-		left:105px;	
-	}
-	.row{
-			background-color: black;
-			color: white;
-			height: 60px;
-			padding-top: 10px;
-			font-family: cursive;
-			opacity: 0.85;
-			font-size: 20px;
-}
-#inputbox{
-	color: black;
-	width: 130px;
-}
-html{
-			max-width: 100%;
-			overflow-x:hidden;
-		}
-		body{
-			background-image: url("22.jpg");
-			background-repeat: no-repeat;
-			background-size: 100% ;
-</style>
-<div id="Caption" ><img src="" name="fill" id="fill" width="" height="" /><br></div>
-<style type="text/css">
-		#Caption{
-			padding-left: 50px;
-			padding-top: 150px;
-			font-family: cursive;
-			font
-		}
-	</style>
-<script type="text/javascript">
-	var json=[{"anim":"Monkey","animdesc":"The Monkey is a primitve form of a human"},{"anim":"Donkey","animdesc":"The Donkey does a lot of work"},{"anim":"Elephant","animdesc":"Elephants never forget"},{"anim":"Dog","animdesc":"Dogs are man's best friends"},{"anim":"Deer","animdesc":"Deers are very timid creatures"},{"anim":"Giraffe","animdesc":"Giraffes have long necks"},{"anim":"Zebra","animdesc":"Zebras run in herds"},{"anim":"Cat","animdesc":"Cats love milk and fishes"}];
-	var anim= new Array();
-	for(var i=0;i<8;i++)
-		anim[i]=json[i.toString()].anim;
-  	
-  	function makelist()
-  	{
-  		for(var k=0;k<8;k++)
-  		{
-  			var ul=document.getElementById("dropdowncontent")
-  			var li=document.createElement("li")
-  			li.appendChild(document.createTextNode(json[k.toString()].anim));
-  			li.setAttribute("class","wow")
-  			li.setAttribute("id",k.toString())
-  			li.setAttribute("onclick","changeit(this)")
-  			ul.appendChild(li)
-  			
-  		}
-  	}
-	function capitalize()
-	{
-		document.getElementById("inputbox").value=document.getElementById("inputbox").value.toUpperCase()
-	}
-	function toggler()
-	{
-		 if(document.getElementById('inputbox').value.length==1)
-		 {
-		 	document.getElementById("dropdowncontent").style.display="block"
-		 }
-		 if(document.getElementById('inputbox').value.length==0)
-		 	document.getElementById("dropdowncontent").style.display="none";
-	} 
-	function changeit(b)
-  		{
-  			inputbox.value=b.innerHTML
-  		}
-  		function letsdoit(a)
-  		{
-  			if(anim.indexOf(a.value)>-1)
-  				{
-  					document.fill.src=a.value+".jpg"
-  					document.fill.height="300"
-  					document.fill.width="300"
-  					var t=document.getElementById("Caption").innerHTML
-  					var num=t.indexOf("r>")
-  					var l=t.slice(0,num+2)
-  					document.getElementById("Caption").innerHTML=l+json[anim.indexOf(a.value).toString()].animdesc
-  		}
-  	}
-	function generatelist()
-	{
-		if(document.getElementById('inputbox').value.length==1)
-			{
-				
-				capitalize();
-			}
-		for(i=0;i<8;i++)
-			if(anim[i].indexOf(document.getElementById('inputbox').value)>-1)
-			{
-				document.getElementById(i.toString()).style.display="block"
-			}
-			else
-				document.getElementById(i.toString()).style.display="none";
-			} 
-</script>
-</body>
+   <head>
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <!-- For allowing mobile users to zoom -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <!-- Bootstrap has been used to make website responsive! -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><!-- Bootstrap -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><!-- Bootstrap -->
+      <title></title>
+   </head>
+   <body  onload="makelist()">
+      <!-- Calls function make list,to make dropdown list -->
+      <nav class="navbar navbar-inverse" id="a">
+         <!-- Bootstrap Code for a navigation bar  -->
+         <div class="container-fluid">
+            <ul class="nav navbar-nav">
+               <li><a href="#">Home</a></li>
+               <li><a href="#">Schedule</a></li>
+               <li><a href="#">Sponsors</a></li>
+               <li><a href="#">About</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" id="abcd">
+               <!-- Part of navigation bar,pulled to the right -->
+               <li><a href="#">Animal Search</a></li>
+               <li><input type="text" name="inputbox" id="inputbox" autocomplete="off" onkeyup="toggler();generatelist()"></li>
+               <!-- Calls functions for implementing dropdown list,on typing  -->
+               <li><img src="11.png" id="pic"  onclick="letsdoit(inputbox)"></li>
+               <!-- Click on the search icon to search for the animal -->
+            </ul>
+         </div>
+      </nav>
+      <div class="pull-right">
+         <ul id="dropdowncontent" >
+            <!-- Dropdown list -->
+         </ul>
+      </div>
+      <style type="text/css">
+         .navbar-inverse .navbar-nav>li>a {
+         color: white;
+         }
+         #a{	
+         font-family: cursive;
+         font-size:20px;
+         }
+         #abcd{
+         position: relative;
+         right:10px;
+         }
+         #inputbox{
+         position: relative;
+         top:10px;
+         }
+         #dropdowncontent{
+         display: none;
+         position: relative;
+         bottom: 10px;
+         margin-right: 90px;
+         }
+         .wow{
+         color: black;
+         padding:4px -10px;
+         text-decoration: none;
+         display: block;
+         width: 85px;
+         border:1px solid gray; 
+         background: white;	
+         opacity: 0.9;
+         border-radius: 4px;
+         position: relative;
+         left:60px;
+         bottom:18px;
+         }
+         #pic{
+         width: 20px;
+         height: 20px;
+         position: relative;
+         left:1px;
+         top:11px;	
+         }
+         #inputbox{
+         color: black;
+         width: 130px;
+         }
+         html{
+         max-width: 100%;
+         overflow-x:hidden;
+         }
+         body{
+         background-image: url("22.jpg");
+         background-repeat: no-repeat;
+         background-size: 100% ;
+      </style>
+      <div id="Caption" ><img src="" name="fill" id="fill" width="" height="" /><br></div>
+      <!-- Image of the animal -->
+      <style type="text/css">
+         #Caption{
+         padding-left: 50px;
+         padding-top: 37px;
+         font-family: cursive;
+         color: white;
+         }
+      </style>
+      <script type="text/javascript"> 
+         var json=[{"anim":"Monkey","animdesc":"The Monkey is a primitve form of a human"},{"anim":"Donkey","animdesc":"The Donkey does a lot of work"},{"anim":"Elephant","animdesc":"Elephants never forget"},{"anim":"Dog","animdesc":"Dogs are man's best friends"},{"anim":"Deer","animdesc":"Deers are very timid creatures"},{"anim":"Giraffe","animdesc":"Giraffes have long necks"},{"anim":"Zebra","animdesc":"Zebras run in herds"},{"anim":"Cat","animdesc":"Cats love milk and fishes"}]; /*JSON data typed in,wasn't available online,so could not use GET request*/
+         var anim= new Array();
+         for(var i=0;i<8;i++) /*Array of animals*/
+         	anim[i]=json[i.toString()].anim;
+          	
+          	function makelist()   /*Automatically creates dropdown list*/
+          	{
+          		for(var k=0;k<8;k++)
+           		{
+          			var ul=document.getElementById("dropdowncontent")
+          			var li=document.createElement("li")
+          			li.appendChild(document.createTextNode(json[k.toString()].anim));
+          			li.setAttribute("class","wow")
+          			li.setAttribute("id",k.toString())
+          			li.setAttribute("onclick","changeit(this)")
+          			ul.appendChild(li)
+          			
+          		}
+          	}
+         function capitalize() /*Capitalizes first character of inputbox*/
+         {
+         	document.getElementById("inputbox").value=document.getElementById("inputbox").value.toUpperCase()
+         }
+         function toggler() /*To decide visibility of the dropdown list*/
+         {
+         	 if(document.getElementById('inputbox').value.length==1)
+         	 {
+         	 	document.getElementById("dropdowncontent").style.display="block"
+         	 }
+         	 if(document.getElementById('inputbox').value.length==0)
+         	 	document.getElementById("dropdowncontent").style.display="none";
+         } 
+         function changeit(b) /*Allows inputbox to get clicked value*/
+          		{
+          			inputbox.value=b.innerHTML
+          		}
+          		function letsdoit(a) /*Generates image*/
+          		{
+          			if(anim.indexOf(a.value)>-1)
+          				{
+          					document.fill.src=a.value+".jpg"
+          					document.fill.height="300"
+          					document.fill.width="300"
+          					var t=document.getElementById("Caption").innerHTML
+          					var num=t.indexOf("r>")
+          					var l=t.slice(0,num+2)
+          					document.getElementById("Caption").innerHTML=l+json[anim.indexOf(a.value).toString()].animdesc
+          		}
+          	}
+         function generatelist() /*Autogenerates dropdown list/Instant Search list*/
+         {
+         	if(document.getElementById('inputbox').value.length==1)
+         		{
+         			
+         			capitalize();
+         		}
+         	for(i=0;i<8;i++)
+         		if(anim[i].indexOf(document.getElementById('inputbox').value)>-1)
+         		{
+         			document.getElementById(i.toString()).style.display="block"
+         		}
+         		else
+         			document.getElementById(i.toString()).style.display="none";
+         		} 
+      </script>
+   </body>
 </html>
